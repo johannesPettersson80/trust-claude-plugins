@@ -1,0 +1,32 @@
+{
+  "name": "trust-claude-plugins",
+  "owner": {
+    "name": "Johannes Pettersson",
+    "email": "johannes_salomon@hotmail.com",
+    "url": "https://github.com/johannesPettersson80/trust-platform"
+  },
+  "plugins": [
+    {
+      "name": "trust-st-lsp",
+      "description": "IEC 61131-3 Structured Text language server for code intelligence on .st files",
+      "version": "0.1.0",
+      "author": {
+        "name": "Johannes Pettersson",
+        "email": "johannes_salomon@hotmail.com"
+      },
+      "homepage": "https://github.com/johannesPettersson80/trust-platform",
+      "license": "MIT OR Apache-2.0",
+      "source": "./plugins/trust-st-lsp",
+      "category": "development",
+      "strict": false,
+      "lspServers": {
+        "trust-lsp": {
+          "command": "trust-lsp",
+          "extensionToLanguage": {
+            ".st": "structured-text"
+          }
+        }
+      }
+    }
+  ]
+}
