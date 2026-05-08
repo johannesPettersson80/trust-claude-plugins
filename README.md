@@ -48,12 +48,42 @@ The `trust-lsp` server itself implements more (rename, code actions, semantic to
 
 ## Install
 
+### 1. Download and install the `trust-lsp` binary
+
+Pick the archive for your platform from the [truST releases page](https://github.com/johannesPettersson80/trust-platform/releases/latest):
+
+| Platform | Archive |
+|---|---|
+| Linux arm64 (Pi 5) | `trust-lsp-linux-arm64.tar.gz` |
+| Linux x86_64 | `trust-lsp-linux-x64.tar.gz` |
+| macOS arm64 | `trust-lsp-darwin-arm64.tar.gz` |
+| macOS x86_64 | `trust-lsp-darwin-x64.tar.gz` |
+| Windows x86_64 | `trust-lsp-win32-x64.zip` |
+
+Linux / macOS one-liner (Pi 5 example — swap `linux-arm64` for your target):
+
+```bash
+mkdir -p ~/.local/bin && curl -L https://github.com/johannesPettersson80/trust-platform/releases/latest/download/trust-lsp-linux-arm64.tar.gz | tar -xz -C ~/.local/bin && chmod +x ~/.local/bin/trust-lsp
+```
+
+Then confirm it's on your `PATH`:
+
+```bash
+which trust-lsp
+```
+
+If it returns nothing, add the install dir to `PATH` (`export PATH="$HOME/.local/bin:$PATH"`) or restart your shell. See [`plugins/trust-st-lsp/README.md`](plugins/trust-st-lsp/README.md) for Windows, from-source, and troubleshooting details.
+
+### 2. Install the plugin in Claude Code
+
+In a Claude Code session at your truST workspace:
+
 ```text
 /plugin marketplace add johannesPettersson80/trust-claude-plugins
 /plugin install trust-st-lsp@trust-claude-plugins
 ```
 
-The plugin needs the `trust-lsp` binary on your `$PATH`. See [`plugins/trust-st-lsp/README.md`](plugins/trust-st-lsp/README.md) for prebuilt downloads and from-source install on each platform.
+Open any `.st` file. Run `/plugin` → **Errors** tab — empty means the server started cleanly.
 
 ## Architecture
 
