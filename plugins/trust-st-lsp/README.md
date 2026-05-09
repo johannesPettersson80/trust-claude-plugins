@@ -32,26 +32,26 @@ Pick the archive for your architecture from the [truST releases page](https://gi
 
 | Platform | Archive |
 |---|---|
-| Linux arm64 (Pi 5) | `trust-lsp-linux-arm64.tar.gz` |
+| Linux arm64 | `trust-lsp-linux-arm64.tar.gz` |
 | Linux x86_64 | `trust-lsp-linux-x64.tar.gz` |
 | macOS arm64 | `trust-lsp-darwin-arm64.tar.gz` |
 | macOS x86_64 | `trust-lsp-darwin-x64.tar.gz` |
 
-Install into `~/.local/bin`. Pi 5 / Linux arm64:
+Install into `~/.local/bin`. Linux x86_64:
 
 ```bash
 mkdir -p ~/.local/bin
-curl -L https://github.com/johannesPettersson80/trust-platform/releases/latest/download/trust-lsp-linux-arm64.tar.gz \
+curl -L https://github.com/johannesPettersson80/trust-platform/releases/latest/download/trust-lsp-linux-x64.tar.gz \
   | tar -xz -C ~/.local/bin
 chmod +x ~/.local/bin/trust-lsp
 ```
 
-Swap `linux-arm64` for `linux-x64`, `darwin-arm64`, or `darwin-x64` on other platforms.
+Swap `linux-x64` for `linux-arm64`, `darwin-x64`, or `darwin-arm64` on other platforms.
 
 Or, if you prefer a single line that survives a paste:
 
 ```bash
-mkdir -p ~/.local/bin && curl -L https://github.com/johannesPettersson80/trust-platform/releases/latest/download/trust-lsp-linux-arm64.tar.gz | tar -xz -C ~/.local/bin && chmod +x ~/.local/bin/trust-lsp
+mkdir -p ~/.local/bin && curl -L https://github.com/johannesPettersson80/trust-platform/releases/latest/download/trust-lsp-linux-x64.tar.gz | tar -xz -C ~/.local/bin && chmod +x ~/.local/bin/trust-lsp
 ```
 
 #### Windows — prebuilt
@@ -75,7 +75,7 @@ which trust-lsp
 # expected: /home/<you>/.local/bin/trust-lsp   (or wherever you installed it)
 ```
 
-If `which` returns nothing, your shell's `PATH` doesn't include the install directory. On Raspberry Pi OS and most Debian-based systems, `~/.local/bin` gets added by `~/.profile` on next login. To pick it up in the current shell:
+If `which` returns nothing, your shell's `PATH` doesn't include the install directory. On most Debian-based systems, `~/.local/bin` gets added by `~/.profile` on next login. To pick it up in the current shell:
 
 ```bash
 export PATH="$HOME/.local/bin:$PATH"

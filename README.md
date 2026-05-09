@@ -10,9 +10,9 @@ It exposes truST's language server through Claude Code's built-in LSP plugin int
 
 | In One Minute | Details |
 |---|---|
-| Best for | Working on `.st` files in Claude Code on edge hardware (Pi 5, x86 Linux, macOS, Windows) and getting real ST-aware diagnostics, jump-to-def, find-references, hover, and call hierarchy from the agent |
+| Best for | Working on `.st` files in Claude Code on any host it runs on (Linux, macOS, Windows; x86_64 or arm64) and getting real ST-aware diagnostics, jump-to-def, find-references, hover, and call hierarchy from the agent |
 | Not for | Editor support outside Claude Code (use the truST VS Code extension); HMI, runtime, or hardware-bus tooling (those are separate truST surfaces) |
-| Current state | v0.1.0; one plugin (`trust-st-lsp`) wired to truST `v0.24.16` prebuilt binaries; verified on Pi 5 (linux-arm64) |
+| Current state | v0.1.0; one plugin (`trust-st-lsp`) wired to truST `v0.24.16` prebuilt binaries for Linux, macOS, and Windows |
 
 ## Contents
 
@@ -54,16 +54,16 @@ Pick the archive for your platform from the [truST releases page](https://github
 
 | Platform | Archive |
 |---|---|
-| Linux arm64 (Pi 5) | `trust-lsp-linux-arm64.tar.gz` |
+| Linux arm64 | `trust-lsp-linux-arm64.tar.gz` |
 | Linux x86_64 | `trust-lsp-linux-x64.tar.gz` |
 | macOS arm64 | `trust-lsp-darwin-arm64.tar.gz` |
 | macOS x86_64 | `trust-lsp-darwin-x64.tar.gz` |
 | Windows x86_64 | `trust-lsp-win32-x64.zip` |
 
-Linux / macOS one-liner (Pi 5 example — swap `linux-arm64` for your target):
+Linux / macOS one-liner (swap `linux-x64` for your target — `linux-arm64`, `darwin-x64`, or `darwin-arm64`):
 
 ```bash
-mkdir -p ~/.local/bin && curl -L https://github.com/johannesPettersson80/trust-platform/releases/latest/download/trust-lsp-linux-arm64.tar.gz | tar -xz -C ~/.local/bin && chmod +x ~/.local/bin/trust-lsp
+mkdir -p ~/.local/bin && curl -L https://github.com/johannesPettersson80/trust-platform/releases/latest/download/trust-lsp-linux-x64.tar.gz | tar -xz -C ~/.local/bin && chmod +x ~/.local/bin/trust-lsp
 ```
 
 Then confirm it's on your `PATH`:
@@ -111,7 +111,7 @@ flowchart LR
 | Plugin version | `0.1.0` |
 | LSP server | `trust-lsp` from truST `v0.24.16` |
 | Distribution | this marketplace + GitHub Releases on the truST repo |
-| Verified surfaces | diagnostics, navigation, symbols, hover, call hierarchy on Pi 5 (linux-arm64) |
+| Verified surfaces | diagnostics, navigation, symbols, hover, call hierarchy |
 | Pending | Anthropic official-marketplace submission |
 
 ## Platform Compatibility
@@ -121,7 +121,7 @@ flowchart LR
 | Platform | Archive |
 |---|---|
 | Linux x86_64 | `trust-lsp-linux-x64.tar.gz` |
-| Linux arm64 (Pi 5) | `trust-lsp-linux-arm64.tar.gz` |
+| Linux arm64 | `trust-lsp-linux-arm64.tar.gz` |
 | macOS x86_64 | `trust-lsp-darwin-x64.tar.gz` |
 | macOS arm64 | `trust-lsp-darwin-arm64.tar.gz` |
 | Windows x86_64 | `trust-lsp-win32-x64.zip` |
@@ -139,8 +139,8 @@ Diagnostics (automatically after every edit Claude makes) and navigation/hover/s
 **Does this work without the truST VS Code extension?**
 Yes. The plugin only needs the `trust-lsp` binary on `$PATH`. The VS Code extension is independent.
 
-**Why does the demo target a Raspberry Pi 5?**
-Because that is the target hardware for truST runtime deployments. If the LSP is responsive enough on a Pi 5, it is responsive enough on a workstation.
+**Does this work on edge hardware?**
+Yes — verified on a Raspberry Pi 5 (linux-arm64), the target hardware for truST runtime deployments. If the LSP is responsive on a Pi, it is responsive on a workstation.
 
 ## Roadmap
 
