@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "trust-st-lsp",
+  "displayName": "truST Structured Text LSP",
+  "version": "0.1.0",
+  "description": "IEC 61131-3 Structured Text language server for Claude Code. Wires the trust-lsp binary into Claude Code's LSP integration for diagnostics, go-to-definition, find references, hover, document and workspace symbols, and call hierarchy on .st files.",
+  "author": {
+    "name": "Johannes Pettersson"
+  },
+  "homepage": "https://github.com/johannesPettersson80/trust-platform",
+  "repository": "https://github.com/johannesPettersson80/trust-claude-plugins",
+  "license": "MIT OR Apache-2.0",
+  "keywords": [
+    "lsp",
+    "iec-61131-3",
+    "structured-text",
+    "plc",
+    "st",
+    "automation"
+  ],
+  "lspServers": {
+    "trust-st": {
+      "command": "trust-lsp",
+      "extensionToLanguage": {
+        ".st": "structured-text",
+        ".ST": "structured-text",
+        ".pou": "structured-text",
+        ".POU": "structured-text"
+      }
+    }
+  }
+}
